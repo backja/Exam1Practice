@@ -2,8 +2,8 @@
 PRACTICE Test 1, problem 2.
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Jacob Back.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -102,7 +102,7 @@ def problem2a(circle, rectangle, window):
       :type window:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 2. Implement and test this function.
+    # Done: 2. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -110,6 +110,22 @@ def problem2a(circle, rectangle, window):
     #    DIFFICULTY:      6
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
+    circle.attach_to(window)
+    rectangle.attach_to(window)
+    window.render(.05)
+
+    window.continue_on_mouse_click()
+
+    line= rg.Line(rectangle.get_upper_right_corner(),rectangle.get_lower_left_corner())
+    line.arrow='last'
+    line.attach_to(window)
+    window.render(.05)
+
+    window.continue_on_mouse_click()
+
+    color_change=rectangle.outline_color
+    circle.fill_color= color_change
+    window.render(.05)
 
 def run_test_problem2b():
     """ Tests the  problem2b   function. """
@@ -181,6 +197,27 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
+    window = win
+    rectangle = rect
+
+    rectangle.attach_to(window)
+    window.render(.05)
+
+    center = rectangle.get_center()
+    height = rectangle.get_height()
+    width =  rectangle.get_width()
+
+    for k in range(n-2):
+        delta_y= height*delta*(k+ 1)
+        delta_x=width*delta*(k+1)
+        top = rg.Point(center.x-delta_x,center.y-delta_y)
+        bottom = rg.Point(center.x+delta_x,center.y+delta_y)
+        rectangle1 = rg.Rectangle(top,bottom)
+        rectangle1.attach_to(window)
+        height = rectangle1.get_height()
+        width = rectangle1.get_width()
+        window.render(.05)
+
 
 
 # ----------------------------------------------------------------------
