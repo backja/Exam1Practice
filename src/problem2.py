@@ -189,7 +189,7 @@ def problem2b(rect, n, delta, win):
       :type win:    rg.RoseWindow
     """
     # ------------------------------------------------------------------
-    # TODO: 3. Implement and test this function.
+    # Done: 3. Implement and test this function.
     #          Tests have been written for you (above).
     # ------------------------------------------------------------------
     # ------------------------------------------------------------------
@@ -207,9 +207,9 @@ def problem2b(rect, n, delta, win):
     height = rectangle.get_height()
     width =  rectangle.get_width()
 
-    for k in range(n-2):
-        delta_y= height*delta*(k+ 1)
-        delta_x=width*delta*(k+1)
+    for k in range(n-1):
+        delta_y= (2*delta+height)/2
+        delta_x=(2*delta+width)/2
         top = rg.Point(center.x-delta_x,center.y-delta_y)
         bottom = rg.Point(center.x+delta_x,center.y+delta_y)
         rectangle1 = rg.Rectangle(top,bottom)
